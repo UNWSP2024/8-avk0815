@@ -8,11 +8,27 @@
 # Start your changes on line 13
 
 def word_separator(sentence):
+    if not sentence:
+        return ""
 
-    new_sentence = ""
-    #    Add your logic here
+    words = []
+    current = sentence[0]
+    for ch in sentence[1:]:
+        if ch.isupper():
+            words.append(current)
+            current = ch
+        else:
+            current += ch
+    words.append(current)
 
-    return new_sentence.strip()
+    formatted = []
+    for i, w in enumerate(words):
+        if i == 0:
+            formatted.append(w[0].upper() + w[1:].lower() if w else "")
+        else:
+            formatted.append(w.lower())
+
+    return " ".join(formatted) + "."
 
 # Example usage
 if __name__=="__main__":
